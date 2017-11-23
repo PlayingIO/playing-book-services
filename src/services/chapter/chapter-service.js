@@ -7,24 +7,24 @@ const defaultOptions = {
 };
 
 class ChapterService extends Service {
-  constructor(options) {
+  constructor (options) {
     options = Object.assign({}, defaultOptions, options);
     super(options);
   }
 
-  setup(app) {
+  setup (app) {
     super.setup(app);
     this.hooks(defaultHooks(this.options));
   }
 
-  find(params) {
+  find (params) {
     params = params || { query: {} };
     params.query.$sort = params.query.$sort || { position: 1 };
 
     return super.find(params);
   }
 
-  _reorder(id, data, params, original) {
+  _reorder (id, data, params, original) {
     return this.get(data.target).then((target) => {
       if (!target) throw new Error("data.target not exists");
       target = target.data || target;
@@ -33,7 +33,7 @@ class ChapterService extends Service {
   }
 }
 
-export default function init(app, options, hooks) {
+export default function init (app, options, hooks) {
   options = Object.assign({ ModelName: 'chapter' }, options);
   return createService(app, ChapterService, ChapterModel, options);
 }

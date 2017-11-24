@@ -2,18 +2,28 @@ import timestamps from 'mongoose-timestamp';
 import { plugins } from 'mostly-feathers-mongoose';
 
 const fields = {
-  authors: [{ type: 'String' }],
-  translators: [{ type: 'String' }],
-  publisher: { type: 'String' },
-  isbn: { type: 'String' },
-  douban: { type: 'String' },
+  authorIntro: { type: 'String' },          // author introduction
+  binding: { type: 'String' },              // binding of book
+  catalog: { type: 'String' },              // catalog
+  doubanRating: { type: 'Number' },
+  images: {
+    small: { type: 'String' },
+    large: { type: 'String' },
+    medium: { type: 'String' },
+  },
+  publisher: { type: 'String' },            // publisher
+  isbn: { type: 'String' },                 // isbn13
+  originTitle: { type: 'String' },          // origin title
+  pages: { type: 'Number' },
+  price: { type: 'String' },
   rating: {
     max: { type: 'Number', default: 0 },
     min: { type: 'Number', default: 0 },
     average: { type: 'Number', default: 0 },
     total: { type: 'Number', default: 0 }
   },
-  price: { type: 'Number', default: 0 }
+  subTitle: { type: 'String' },             // sub title
+  translators: [{ type: 'String' }],        // trans
 };
 
 export default function(app, name) {

@@ -8,6 +8,7 @@ export default {
       "Publishable",
       "Commentable",
       "HasRelatedText",
+      "Tagable",
       "Downloadable"
     ],
     "subtypes": ['chapter']
@@ -20,6 +21,7 @@ export default {
       "Publishable",
       "Commentable",
       "HasRelatedText",
+      "Tagable",
       "Downloadable"
     ]
   }

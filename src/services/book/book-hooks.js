@@ -20,7 +20,7 @@ module.exports = function(options = {}) {
         auth.authenticate('jwt'),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
-        content.computePath(),
+        content.computePath({ type: 'book' }),
         content.fetchBlobs()
       ],
       update: [
@@ -28,7 +28,7 @@ module.exports = function(options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
-        content.computePath(),
+        content.computePath({ type: 'book' }),
         discard('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.fetchBlobs()
       ],
@@ -37,7 +37,7 @@ module.exports = function(options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
-        content.computePath(),
+        content.computePath({ type: 'book' }),
         discard('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.fetchBlobs()
       ],

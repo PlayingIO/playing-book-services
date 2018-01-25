@@ -21,7 +21,7 @@ module.exports = function(options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         content.computePath({ type: 'chapter' }),
-        content.fetchBlobs()
+        content.fetchBlobs({ xpaths: 'files' })
       ],
       update: [
         auth.authenticate('jwt'),
@@ -30,7 +30,7 @@ module.exports = function(options = {}) {
         hooks.depopulate('parent'),
         content.computePath({ type: 'chapter' }),
         hooks.discardPath('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
-        content.fetchBlobs()
+        content.fetchBlobs({ xpaths: 'files' })
       ],
       patch: [
         auth.authenticate('jwt'),
@@ -39,7 +39,7 @@ module.exports = function(options = {}) {
         hooks.depopulate('parent'),
         content.computePath({ type: 'chapter' }),
         hooks.discardPath('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
-        content.fetchBlobs()
+        content.fetchBlobs({ xpaths: 'files' })
       ],
       remove: [
         auth.authenticate('jwt')

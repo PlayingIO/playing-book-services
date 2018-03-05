@@ -28,7 +28,7 @@ module.exports = function(options = {}) {
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
         content.computePath({ type: 'book' }),
-        hooks.discardPath('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt')
+        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt')
       ],
       patch: [
         auth.authenticate('jwt'),
@@ -36,7 +36,7 @@ module.exports = function(options = {}) {
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
         content.computePath({ type: 'book' }),
-        hooks.discardPath('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt')
+        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt')
       ],
       remove: [
         auth.authenticate('jwt')
@@ -44,7 +44,7 @@ module.exports = function(options = {}) {
     },
     after: {
       all: [
-        iff(isProvider('external'), hooks.discardPath('ACL')),
+        iff(isProvider('external'), hooks.discardFields('ACL')),
         hooks.populate('parent', { service: 'folders', fallThrough: ['headers'] }),
         hooks.populate('creator', { service: 'users' }),
         hooks.presentEntity(BookEntity, options),

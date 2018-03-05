@@ -29,7 +29,7 @@ module.exports = function(options = {}) {
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
         content.computePath({ type: 'chapter' }),
-        hooks.discardPath('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
+        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.fetchBlobs({ xpaths: 'files' })
       ],
       patch: [
@@ -38,7 +38,7 @@ module.exports = function(options = {}) {
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
         content.computePath({ type: 'chapter' }),
-        hooks.discardPath('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
+        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.fetchBlobs({ xpaths: 'files' })
       ],
       remove: [
@@ -47,7 +47,7 @@ module.exports = function(options = {}) {
     },
     after: {
       all: [
-        iff(isProvider('external'), hooks.discardPath('ACL')),
+        iff(isProvider('external'), hooks.discardFields('ACL')),
         hooks.populate('parent', { service: 'books', fallThrough: ['headers'] }),
         hooks.populate('creator', { service: 'users' }),
         hooks.presentEntity(ChapterEntity, options),

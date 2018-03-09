@@ -1,4 +1,5 @@
 import { omit, pick } from 'lodash';
+import fp from 'mostly-func';
 import Entity from 'mostly-entity';
 import BlobEntity from 'playing-content-services/lib/entities/blob-entity';
 import { DocTypes } from '~/constants';
@@ -18,7 +19,7 @@ BookEntity.expose('metadata', (obj, options) => {
     obj.metadata.packages = Types[obj.type].packages;
   }
 
-  return obj.metadata;
+  return fp.sortKeys(obj.metadata);
 });
 
 BookEntity.excepts('destroyedAt');

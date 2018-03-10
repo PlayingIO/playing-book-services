@@ -1,6 +1,5 @@
-import { omit } from 'lodash';
-import fp from 'mostly-func';
 import Entity from 'mostly-entity';
+import fp from 'mostly-func';
 import BlobEntity from 'playing-content-services/lib/entities/blob-entity';
 import { DocTypes } from '~/constants';
 

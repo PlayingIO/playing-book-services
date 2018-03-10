@@ -28,8 +28,9 @@ module.exports = function(options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
+        hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.computePath({ type: 'chapter' }),
-        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
+        content.computeAncestors(),
         content.fetchBlobs({ xpaths: 'files' })
       ],
       patch: [
@@ -37,8 +38,9 @@ module.exports = function(options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
+        hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.computePath({ type: 'chapter' }),
-        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt'),
+        content.computeAncestors(),
         content.fetchBlobs({ xpaths: 'files' })
       ],
       remove: [
@@ -49,6 +51,7 @@ module.exports = function(options = {}) {
       all: [
         iff(isProvider('external'), hooks.discardFields('ACL')),
         hooks.populate('parent', { service: 'books', fallThrough: ['headers'] }),
+        hooks.populate('ancestors', { service: 'folders', fallThrough: ['headers'] }),
         hooks.populate('creator', { service: 'users' }),
         hooks.presentEntity(ChapterEntity, options),
         content.documentEnrichers(options),

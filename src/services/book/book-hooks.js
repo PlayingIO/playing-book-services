@@ -27,16 +27,18 @@ module.exports = function(options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
+        hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.computePath({ type: 'book' }),
-        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt')
+        content.computeAncestors()
       ],
       patch: [
         auth.authenticate('jwt'),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
+        hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.computePath({ type: 'book' }),
-        hooks.discardFields('id', 'metadata', 'createdAt', 'updatedAt', 'destroyedAt')
+        content.computeAncestors()
       ],
       remove: [
         auth.authenticate('jwt')
@@ -46,6 +48,7 @@ module.exports = function(options = {}) {
       all: [
         iff(isProvider('external'), hooks.discardFields('ACL')),
         hooks.populate('parent', { service: 'folders', fallThrough: ['headers'] }),
+        hooks.populate('ancestors', { service: 'folders', fallThrough: ['headers'] }),
         hooks.populate('creator', { service: 'users' }),
         hooks.presentEntity(BookEntity, options),
         content.documentEnrichers(options),

@@ -51,7 +51,7 @@ module.exports = function(options = {}) {
       all: [
         iff(isProvider('external'), hooks.discardFields('ACL')),
         hooks.populate('parent', { service: 'books', fallThrough: ['headers'] }),
-        hooks.populate('ancestors', { service: 'folders', fallThrough: ['headers'] }),
+        hooks.populate('ancestors'), // with typed id
         hooks.populate('creator', { service: 'users' }),
         hooks.presentEntity(ChapterEntity, options),
         content.documentEnrichers(options),

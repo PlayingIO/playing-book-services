@@ -46,7 +46,6 @@ module.exports = function(options = {}) {
     },
     after: {
       all: [
-        iff(isProvider('external'), hooks.discardFields('ACL')),
         hooks.populate('parent', { service: 'folders', fallThrough: ['headers'] }),
         hooks.populate('ancestors'), // with typed id
         hooks.populate('creator', { service: 'users' }),

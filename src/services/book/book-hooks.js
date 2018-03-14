@@ -1,5 +1,4 @@
 import { iff, isProvider } from 'feathers-hooks-common';
-import { hooks as auth } from 'feathers-authentication';
 import { associateCurrentUser, queryWithCurrentUser } from 'feathers-authentication-hooks';
 import { hooks } from 'mostly-feathers-mongoose';
 import { hooks as content } from 'playing-content-services';
@@ -17,13 +16,13 @@ module.exports = function(options = {}) {
         // queryWithCurrentUser({ idField: 'id', as: 'creator' })
       ],
       create: [
-        auth.authenticate('jwt'),
+        hooks.authenticate('jwt', options),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         content.computePath({ type: 'book' })
       ],
       update: [
-        auth.authenticate('jwt'),
+        hooks.authenticate('jwt', options),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
@@ -32,7 +31,7 @@ module.exports = function(options = {}) {
         content.computeAncestors()
       ],
       patch: [
-        auth.authenticate('jwt'),
+        hooks.authenticate('jwt', options),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
@@ -41,7 +40,7 @@ module.exports = function(options = {}) {
         content.computeAncestors()
       ],
       remove: [
-        auth.authenticate('jwt')
+        hooks.authenticate('jwt', options)
       ]
     },
     after: {

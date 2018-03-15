@@ -1,4 +1,6 @@
 import { Service, helpers, createService } from 'mostly-feathers-mongoose';
+import fp from 'mostly-func';
+
 import ChapterModel from '~/models/chapter-model';
 import defaultHooks from './chapter-hooks';
 

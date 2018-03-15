@@ -16,13 +16,13 @@ module.exports = function(options = {}) {
         // queryWithCurrentUser({ idField: 'id', as: 'creator' })
       ],
       create: [
-        hooks.authenticate('jwt', options),
+        hooks.authenticate('jwt', options.auth),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         content.computePath({ type: 'book' })
       ],
       update: [
-        hooks.authenticate('jwt', options),
+        hooks.authenticate('jwt', options.auth),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
@@ -31,7 +31,7 @@ module.exports = function(options = {}) {
         content.computeAncestors()
       ],
       patch: [
-        hooks.authenticate('jwt', options),
+        hooks.authenticate('jwt', options.auth),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
@@ -40,7 +40,7 @@ module.exports = function(options = {}) {
         content.computeAncestors()
       ],
       remove: [
-        hooks.authenticate('jwt', options)
+        hooks.authenticate('jwt', options.auth)
       ]
     },
     after: {

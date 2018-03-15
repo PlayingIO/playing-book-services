@@ -18,7 +18,7 @@ class ChapterService extends Service {
   }
 
   find (params) {
-    params = params || { query: {} };
+    params = fp.assign({ query: {} }, params);
     params.query.$sort = params.query.$sort || { position: 1 };
 
     return super.find(params);

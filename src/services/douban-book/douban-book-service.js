@@ -23,7 +23,7 @@ class DoubanBookService extends Service {
     this.hooks(defaultHooks(this.options));
   }
 
-  _cache(uri) {
+  _cache (uri) {
     return request({ uri, json: true }).then(result => {
       if (result) {
         return super.create(result);

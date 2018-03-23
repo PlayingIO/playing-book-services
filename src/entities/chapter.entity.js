@@ -1,11 +1,11 @@
 import Entity from 'mostly-entity';
 import fp from 'mostly-func';
-import BlobEntity from 'playing-content-services/lib/entities/blob-entity';
+import { entities as contents } from 'playing-content-services';
 import { DocTypes } from '~/constants';
 
 const ChapterEntity = new Entity('Chapter', {
-  file: { using: BlobEntity },
-  files: { using: BlobEntity },
+  file: { using: contents.BlobEntity },
+  files: { using: contents.BlobEntity },
 });
 
 ChapterEntity.expose('metadata', (obj, options) => {

@@ -1,7 +1,7 @@
 import { hooks } from 'mostly-feathers-mongoose';
 import DoubanBookEntity from '~/entities/douban-book-entity';
 
-module.exports = function (options = {}) {
+export default function (options = {}) {
   return {
     before: {
       all: [

@@ -6,7 +6,7 @@ import { hooks as content } from 'playing-content-services';
 
 import BookEntity from '~/entities/book-entity';
 
-module.exports = function (options = {}) {
+export default function (options = {}) {
   return {
     before: {
       all: [

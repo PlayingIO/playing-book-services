@@ -1,5 +1,5 @@
 import { hooks } from 'mostly-feathers-mongoose';
-import DoubanBookEntity from '~/entities/douban-book-entity';
+import DoubanBookEntity from '~/entities/douban-book.entity';
 
 export default function (options = {}) {
   return {
@@ -14,4 +14,4 @@ export default function (options = {}) {
       ]
     }
   };
-};
+}

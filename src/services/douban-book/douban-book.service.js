@@ -1,8 +1,8 @@
 import { Service, createService } from 'mostly-feathers-mongoose';
 import request from 'request-promise';
 import url from 'url';
-import DoubanBookModel from '~/models/douban-book-model';
-import defaultHooks from './douban-book-hooks';
+import DoubanBookModel from '~/models/douban-book.model';
+import defaultHooks from './douban-book.hooks';
 
 const DoubanBookApi = 'https://api.douban.com/v2/book/';
 

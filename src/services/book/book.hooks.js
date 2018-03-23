@@ -4,7 +4,7 @@ import { hooks } from 'mostly-feathers-mongoose';
 import { cache } from 'mostly-feathers-cache';
 import { hooks as content } from 'playing-content-services';
 
-import ChapterEntity from '~/entities/chapter-entity';
+import BookEntity from '~/entities/book.entity';
 
 export default function (options = {}) {
   return {
@@ -20,38 +20,34 @@ export default function (options = {}) {
         // queryWithCurrentUser({ idField: 'id', as: 'creator' })
       ],
       create: [
-        hooks.authenticate('jwt', options.auth),
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
-        content.computePath({ type: 'chapter' }),
-        content.fetchBlobs({ xpaths: 'files' })
+        content.computePath({ type: 'book' })
       ],
       update: [
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
         hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
-        content.computePath({ type: 'chapter' }),
-        content.computeAncestors(),
-        content.fetchBlobs({ xpaths: 'files' })
+        content.computePath({ type: 'book' }),
+        content.computeAncestors()
       ],
       patch: [
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
         hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
-        content.computePath({ type: 'chapter' }),
-        content.computeAncestors(),
-        content.fetchBlobs({ xpaths: 'files' })
+        content.computePath({ type: 'book' }),
+        content.computeAncestors()
       ]
     },
     after: {
       all: [
-        hooks.populate('parent', { service: 'books', fallThrough: ['headers'] }),
+        hooks.populate('parent', { service: 'folders', fallThrough: ['headers'] }),
         hooks.populate('ancestors'), // with typed id
         hooks.populate('creator', { service: 'users' }),
         cache(options.cache, { headers: ['enrichers-document'] }),
-        hooks.presentEntity(ChapterEntity, options),
+        hooks.presentEntity(BookEntity, options),
         content.documentEnrichers(options),
         hooks.responder()
       ],
@@ -60,4 +56,4 @@ export default function (options = {}) {
       ]
     }
   };
-};
+}

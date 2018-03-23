@@ -1,8 +1,9 @@
 import assert from 'assert';
 import { Service, createService } from 'mostly-feathers-mongoose';
 import fp from 'mostly-func';
-import BookModel from '~/models/book-model';
-import defaultHooks from './book-hooks';
+
+import BookModel from '~/models/book.model';
+import defaultHooks from './book.hooks';
 
 const defaultOptions = {
   name: 'books'

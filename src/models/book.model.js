@@ -25,7 +25,7 @@ const fields = {
   translators: [{ type: String }],        // trans
 };
 
-export default function(app, name) {
+export default function (app, name) {
   const mongoose = app.get('mongoose');
   const DocumentModel = mongoose.model('document');
   const schema = new mongoose.Schema(fields);

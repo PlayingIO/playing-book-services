@@ -46,9 +46,9 @@ export default function (options = {}) {
         hooks.populate('parent', { service: 'folders', fallThrough: ['headers'] }),
         hooks.populate('ancestors'), // with typed id
         hooks.populate('creator', { service: 'users' }),
+        content.documentEnrichers(options),
         cache(options.cache, { headers: ['enrichers-document'] }),
         hooks.presentEntity(BookEntity, options.entities),
-        content.documentEnrichers(options),
         hooks.responder()
       ],
       create: [

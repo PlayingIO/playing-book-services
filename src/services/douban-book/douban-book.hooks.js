@@ -9,7 +9,7 @@ export default function (options = {}) {
     },
     after: {
       all: [
-        hooks.presentEntity(DoubanBookEntity, options),
+        hooks.presentEntity(DoubanBookEntity, options.entities),
         hooks.responder()
       ]
     }

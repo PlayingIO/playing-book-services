@@ -1,6 +1,8 @@
 import { plugins } from 'mostly-feathers-mongoose';
 
-// chapter of a parent book
+/**
+ * Chapter of a parent book
+ */
 const fields = {
   content: { type: String, default: '' },
   mimetype: { type: String }

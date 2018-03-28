@@ -1,10 +1,10 @@
-import { plugins } from 'mostly-feathers-mongoose';
-
 const options = {
   timestamps: true
 };
 
-// douban api v2 book model
+/**
+ * Douban api v2 book model
+ */
 const fields = {
   id: { type: Number },
   alt: { type: String },

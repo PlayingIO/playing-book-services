@@ -1,5 +1,8 @@
 import { plugins } from 'mostly-feathers-mongoose';
 
+/**
+ * Book info
+ */
 const fields = {
   authorIntro: { type: String },          // author introduction
   binding: { type: String },              // binding of book

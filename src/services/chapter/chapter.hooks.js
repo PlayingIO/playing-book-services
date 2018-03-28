@@ -30,7 +30,7 @@ export default function (options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
-        hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
+        hooks.discardFields('metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.computePath({ type: 'chapter' }),
         content.computeAncestors(),
         content.fetchBlobs({ xpaths: 'files' })
@@ -39,7 +39,7 @@ export default function (options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         hooks.depopulate('parent'),
-        hooks.discardFields('id', 'metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
+        hooks.discardFields('metadata', 'ancestors', 'createdAt', 'updatedAt', 'destroyedAt'),
         content.computePath({ type: 'chapter' }),
         content.computeAncestors(),
         content.fetchBlobs({ xpaths: 'files' })

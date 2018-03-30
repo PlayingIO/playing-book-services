@@ -4,7 +4,7 @@ import { hooks } from 'mostly-feathers-mongoose';
 import { cache } from 'mostly-feathers-cache';
 import { hooks as content } from 'playing-content-services';
 
-import BookEntity from '~/entities/book.entity';
+import BookEntity from '../../entities/book.entity';
 
 export default function (options = {}) {
   return {

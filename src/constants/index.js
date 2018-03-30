@@ -1,5 +1,5 @@
 import DocTypes from './doc-types';
 
-export default {
+export {
   DocTypes
 };

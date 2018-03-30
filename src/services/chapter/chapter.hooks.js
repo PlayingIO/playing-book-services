@@ -4,7 +4,7 @@ import { hooks } from 'mostly-feathers-mongoose';
 import { cache } from 'mostly-feathers-cache';
 import { hooks as content } from 'playing-content-services';
 
-import ChapterEntity from '~/entities/chapter.entity';
+import ChapterEntity from '../../entities/chapter.entity';
 
 export default function (options = {}) {
   return {

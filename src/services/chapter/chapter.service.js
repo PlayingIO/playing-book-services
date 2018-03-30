@@ -1,14 +1,14 @@
 import { Service, helpers, createService } from 'mostly-feathers-mongoose';
 import fp from 'mostly-func';
 
-import ChapterModel from '~/models/chapter.model';
+import ChapterModel from '../../models/chapter.model';
 import defaultHooks from './chapter.hooks';
 
 const defaultOptions = {
   name: 'chapters'
 };
 
-class ChapterService extends Service {
+export class ChapterService extends Service {
   constructor (options) {
     options = Object.assign({}, defaultOptions, options);
     super(options);

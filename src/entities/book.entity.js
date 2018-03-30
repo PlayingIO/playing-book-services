@@ -1,7 +1,7 @@
 import Entity from 'mostly-entity';
 import fp from 'mostly-func';
 import { entities as contents } from 'playing-content-services';
-import { DocTypes } from '~/constants';
+import { DocTypes } from '../constants';
 
 const BookEntity = new Entity('Book', {
   file: { using: contents.BlobEntity },

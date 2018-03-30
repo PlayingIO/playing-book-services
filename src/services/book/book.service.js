@@ -2,7 +2,7 @@ import assert from 'assert';
 import { Service, createService } from 'mostly-feathers-mongoose';
 import fp from 'mostly-func';
 
-import BookModel from '~/models/book.model';
+import BookModel from '../../models/book.model';
 import defaultHooks from './book.hooks';
 
 const defaultOptions = {
@@ -26,7 +26,7 @@ const doubanMapping = {
   'translator': 'translators',
 };
 
-class BookService extends Service {
+export class BookService extends Service {
   constructor (options) {
     options = Object.assign({}, defaultOptions, options);
     super(options);

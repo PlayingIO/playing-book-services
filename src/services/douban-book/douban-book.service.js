@@ -1,7 +1,7 @@
 import { Service, createService } from 'mostly-feathers-mongoose';
 import request from 'request-promise';
 import url from 'url';
-import DoubanBookModel from '~/models/douban-book.model';
+import DoubanBookModel from '../../models/douban-book.model';
 import defaultHooks from './douban-book.hooks';
 
 const DoubanBookApi = 'https://api.douban.com/v2/book/';
@@ -12,7 +12,7 @@ const defaultOptions = {
 };
 
 // Douban v2 book api with cache service
-class DoubanBookService extends Service {
+export class DoubanBookService extends Service {
   constructor (options) {
     options = Object.assign({}, defaultOptions, options);
     super(options);

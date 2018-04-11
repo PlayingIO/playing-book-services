@@ -1,8 +1,11 @@
+import makeDebug from 'debug';
 import { Service, helpers, createService } from 'mostly-feathers-mongoose';
 import fp from 'mostly-func';
 
 import ChapterModel from '../../models/chapter.model';
 import defaultHooks from './chapter.hooks';
+
+const debug = makeDebug('playing:book-services:chapters');
 
 const defaultOptions = {
   name: 'chapters'

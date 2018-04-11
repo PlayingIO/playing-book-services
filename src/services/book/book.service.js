@@ -1,9 +1,12 @@
 import assert from 'assert';
+import makeDebug from 'debug';
 import { Service, createService } from 'mostly-feathers-mongoose';
 import fp from 'mostly-func';
 
 import BookModel from '../../models/book.model';
 import defaultHooks from './book.hooks';
+
+const debug = makeDebug('playing:book-services:books');
 
 const defaultOptions = {
   name: 'books'

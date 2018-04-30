@@ -31,7 +31,7 @@ const doubanMapping = {
 
 export class BookService extends Service {
   constructor (options) {
-    options = Object.assign({}, defaultOptions, options);
+    options = fp.assign(defaultOptions, options);
     super(options);
   }
 
@@ -66,7 +66,7 @@ export class BookService extends Service {
 }
 
 export default function init (app, options, hooks) {
-  options = Object.assign({ ModelName: 'book' }, options);
+  options = fp.assign({ ModelName: 'book' }, options);
   return createService(app, BookService, BookModel, options);
 }
 

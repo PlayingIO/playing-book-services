@@ -17,7 +17,7 @@ const defaultOptions = {
 // Douban v2 book api with cache service
 export class DoubanBookService extends Service {
   constructor (options) {
-    options = Object.assign({}, defaultOptions, options);
+    options = fp.assign(defaultOptions, options);
     super(options);
   }
 
@@ -58,7 +58,7 @@ export class DoubanBookService extends Service {
 }
 
 export default function init (app, options, hooks) {
-  options = Object.assign({ ModelName: 'douban-book' }, options);
+  options = fp.assign({ ModelName: 'douban-book' }, options);
   return createService(app, DoubanBookService, DoubanBookModel, options);
 }
 

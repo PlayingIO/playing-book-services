@@ -44,7 +44,7 @@ export class DoubanBookService extends Service {
 
   get (id, params) {
     const uri = url.resolve(DoubanBookApi, `isbn/${id}`);
-    return this.action('first').find({ query: {
+    return this.get(null, { query: {
       $or: [
         { isbn10: id },
         { isbn13: id }

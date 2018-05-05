@@ -1,7 +1,9 @@
 import makeDebug from 'debug';
 import { Service, createService } from 'mostly-feathers-mongoose';
+import fp from 'mostly-func';
 import request from 'request-promise';
 import url from 'url';
+
 import DoubanBookModel from '../../models/douban-book.model';
 import defaultHooks from './douban-book.hooks';
 

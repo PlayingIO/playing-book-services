@@ -66,7 +66,7 @@ export class BookService extends Service {
 }
 
 export default function init (app, options, hooks) {
-  options = fp.assign({ ModelName: 'book' }, options);
+  options = { ModelName: 'book', ...options };
   return createService(app, BookService, BookModel, options);
 }
 

@@ -60,7 +60,7 @@ export class DoubanBookService extends Service {
 }
 
 export default function init (app, options, hooks) {
-  options = fp.assign({ ModelName: 'douban-book' }, options);
+  options = { ModelName: 'douban-book', ...options };
   return createService(app, DoubanBookService, DoubanBookModel, options);
 }
 

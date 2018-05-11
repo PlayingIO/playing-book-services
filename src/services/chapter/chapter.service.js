@@ -39,7 +39,7 @@ export class ChapterService extends Service {
 }
 
 export default function init (app, options, hooks) {
-  options = fp.assign({ ModelName: 'chapter' }, options);
+  options = { ModelName: 'chapter', ...options };
   return createService(app, ChapterService, ChapterModel, options);
 }
 

@@ -23,7 +23,7 @@ export class ChapterService extends Service {
   }
 
   find (params) {
-    params = fp.assign({ query: {} }, params);
+    params = { query: {}, ...params };
     params.query.$sort = params.query.$sort || { position: 1 };
 
     return super.find(params);

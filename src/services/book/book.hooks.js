@@ -22,7 +22,8 @@ export default function (options = {}) {
       create: [
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
-        content.computePath({ type: 'book' })
+        content.computePath({ type: 'book' }),
+        content.computeAncestors()
       ],
       update: [
         iff(isProvider('external'),

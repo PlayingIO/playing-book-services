@@ -24,6 +24,7 @@ export default function (options = {}) {
         iff(isProvider('external'),
           associateCurrentUser({ idField: 'id', as: 'creator' })),
         content.computePath({ type: 'chapter' }),
+        content.computeAncestors(),
         content.fetchBlobs({ xpaths: 'files' })
       ],
       update: [

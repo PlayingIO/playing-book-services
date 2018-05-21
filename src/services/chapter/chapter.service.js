@@ -32,7 +32,7 @@ export class ChapterService extends Service {
   reorder (id, data, params, original) {
     return this.get(data.target).then((target) => {
       if (!target) throw new Error("data.target not exists");
-      target = target.data || target;
+      target = fp.propOf('data', target);
       return helpers.reorderPosition(this.Model, original, target.position, { classify: 'parent' });
     });
   }

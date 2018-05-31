@@ -3,8 +3,7 @@ import { associateCurrentUser, queryWithCurrentUser } from 'feathers-authenticat
 import { hooks } from 'mostly-feathers-mongoose';
 import { cache } from 'mostly-feathers-cache';
 import contents from 'playing-content-common';
-
-import BookEntity from '../../entities/book.entity';
+import { BookEntity } from 'playing-book-common';
 
 export default function (options = {}) {
   return {

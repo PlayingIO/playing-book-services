@@ -1,6 +1,6 @@
 {
   "name": "playing-book-services",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Book management microservices for playful applications",
   "author": "Forafish",
   "license": "MIT",

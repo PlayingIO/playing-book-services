@@ -1,7 +1,7 @@
 Playing Book Services
 =====================
 
-Book management microservices for playful applications.
+Book management microservices for building playful applications.
 
 # Usage
 

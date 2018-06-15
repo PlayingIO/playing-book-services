@@ -2,6 +2,6 @@ import Entity from 'mostly-entity';
 
 const DoubanEntity = new Entity('Douban');
 
-DoubanEntity.excepts('destroyedAt');
+DoubanEntity.excepts('_id');
 
 export default DoubanEntity.asImmutable();

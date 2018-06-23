@@ -4,4 +4,4 @@ const DoubanEntity = new Entity('Douban');
 
 DoubanEntity.discard('_id');
 
-export default DoubanEntity.asImmutable();
+export default DoubanEntity.freeze();

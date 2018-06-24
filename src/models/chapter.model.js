@@ -12,6 +12,5 @@ export default function (app, name) {
   const mongoose = app.get('mongoose');
   const DocumentModel = mongoose.model('document');
   const schema = new mongoose.Schema(fields);
-  schema.plugin(plugins.sortable, { classify: 'parent' });
   return DocumentModel.discriminator(name, schema);
 }

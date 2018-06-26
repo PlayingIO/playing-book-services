@@ -40,7 +40,7 @@ export class BookService extends Service {
     this.hooks(defaultHooks(this.options));
   }
 
-  create (data, params) {
+  async create (data, params) {
     assert(data.title, 'title is not provided');
     assert(data.isbn, 'isbn is not provided');
 

@@ -28,14 +28,6 @@ export class ChapterService extends Service {
 
     return super.find(params);
   }
-
-  reorder (id, data, params, original) {
-    return this.get(data.target).then(target => {
-      if (!target) throw new Error("data.target not exists");
-      target = fp.propOf('data', target);
-      return helpers.reorderPosition(this.Model, original, target.position, { classify: 'parent' });
-    });
-  }
 }
 
 export default function init (app, options, hooks) {

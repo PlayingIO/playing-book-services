@@ -28,7 +28,7 @@ export class DoubanBookService extends Service {
     this.hooks(defaultHooks(this.options));
   }
 
-  _cache (uri) {
+  async _cache (uri) {
     return request({ uri, json: true }).then(result => {
       if (result) {
         return super.create(result);
@@ -42,7 +42,7 @@ export class DoubanBookService extends Service {
     });
   }
 
-  get (id, params) {
+  async get (id, params) {
     const uri = url.resolve(DoubanBookApi, `isbn/${id}`);
     return this.get(null, { query: {
       $or: [

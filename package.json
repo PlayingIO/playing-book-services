@@ -16,7 +16,7 @@
     "test": "npm run lint && npm run coverage"
   },
   "dependencies": {
-    "esm": "^3.0.14",
+    "esm": "^3.0.63",
     "feathers-authentication": "^1.2.3",
     "feathers-authentication-hooks": "^0.1.4",
     "feathers-authentication-jwt": "^0.3.1",

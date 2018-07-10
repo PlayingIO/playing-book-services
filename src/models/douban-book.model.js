@@ -45,9 +45,10 @@ const fields = {
   url: { type: String },
 };
 
-export default function model (app, name) {
+module.exports = function model (app, name) {
   const mongoose = app.get('mongoose');
   const schema = new mongoose.Schema(fields, options);
   schema.index({ isbn10: 1, isbn13: 1 });
   return mongoose.model(name, schema);
-}
+};
+module.exports.schema = fields;

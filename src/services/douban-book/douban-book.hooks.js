@@ -1,7 +1,7 @@
-import { hooks } from 'mostly-feathers-mongoose';
-import DoubanBookEntity from '../../entities/douban-book.entity';
+const { hooks } = require('mostly-feathers-mongoose');
+const DoubanBookEntity = require('../../entities/douban-book.entity');
 
-export default function (options = {}) {
+module.exports = function (options = {}) {
   return {
     before: {
       all: [
@@ -14,4 +14,4 @@ export default function (options = {}) {
       ]
     }
   };
-}
+};

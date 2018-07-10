@@ -1,11 +1,11 @@
-import makeDebug from 'debug';
-import { Service, createService } from 'mostly-feathers-mongoose';
-import fp from 'mostly-func';
-import request from 'request-promise';
-import url from 'url';
+const makeDebug = require('debug');
+const { Service, createService } = require('mostly-feathers-mongoose');
+const fp = require('mostly-func');
+const request = require('request-promise');
+const url = require('url');
 
-import DoubanBookModel from '../../models/douban-book.model';
-import defaultHooks from './douban-book.hooks';
+const DoubanBookModel = require('../../models/douban-book.model');
+const defaultHooks = require('./douban-book.hooks');
 
 const debug = makeDebug('playing:book-services:douban-books');
 
@@ -17,7 +17,7 @@ const defaultOptions = {
 };
 
 // Douban v2 book api with cache service
-export class DoubanBookService extends Service {
+class DoubanBookService extends Service {
   constructor (options) {
     options = fp.assignAll(defaultOptions, options);
     super(options);
@@ -59,10 +59,9 @@ export class DoubanBookService extends Service {
   }
 }
 
-export default function init (app, options, hooks) {
+module.exports = function init (app, options, hooks) {
   options = { ModelName: 'douban-book', ...options };
   return createService(app, DoubanBookService, DoubanBookModel, options);
-}
-
-init.Service = DoubanBookService;
+};
+module.exports.Service = DoubanBookService;
 

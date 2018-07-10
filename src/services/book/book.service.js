@@ -1,10 +1,10 @@
-import assert from 'assert';
-import makeDebug from 'debug';
-import { Service, createService } from 'mostly-feathers-mongoose';
-import fp from 'mostly-func';
+const assert = require('assert');
+const makeDebug = require('debug');
+const { Service, createService } = require('mostly-feathers-mongoose');
+const fp = require('mostly-func');
 
-import BookModel from '../../models/book.model';
-import defaultHooks from './book.hooks';
+const BookModel = require('../../models/book.model');
+const defaultHooks = require('./book.hooks');
 
 const debug = makeDebug('playing:book-services:books');
 
@@ -29,7 +29,7 @@ const doubanMapping = {
   'translator': 'translators',
 };
 
-export class BookService extends Service {
+class BookService extends Service {
   constructor (options) {
     options = fp.assignAll(defaultOptions, options);
     super(options);
@@ -65,9 +65,8 @@ export class BookService extends Service {
 
 }
 
-export default function init (app, options, hooks) {
+module.exports = function init (app, options, hooks) {
   options = { ModelName: 'book', ...options };
   return createService(app, BookService, BookModel, options);
-}
-
-init.Service = BookService;
+};
+module.exports.Service = BookService;

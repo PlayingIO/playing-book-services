@@ -1,4 +1,4 @@
-import { plugins } from 'mostly-feathers-mongoose';
+const { plugins } = require('mostly-feathers-mongoose');
 
 /**
  * Book info
@@ -28,9 +28,10 @@ const fields = {
   translators: [{ type: String }],        // trans
 };
 
-export default function (app, name) {
+module.exports = function (app, name) {
   const mongoose = app.get('mongoose');
   const DocumentModel = mongoose.model('document');
   const schema = new mongoose.Schema(fields);
   return DocumentModel.discriminator(name, schema);
-}
+};
+module.exports.schema = fields;

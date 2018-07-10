@@ -1,9 +1,9 @@
-import makeDebug from 'debug';
-import { Service, helpers, createService } from 'mostly-feathers-mongoose';
-import fp from 'mostly-func';
+const makeDebug = require('debug');
+const { Service, helpers, createService } = require('mostly-feathers-mongoose');
+const fp = require('mostly-func');
 
-import ChapterModel from '../../models/chapter.model';
-import defaultHooks from './chapter.hooks';
+const ChapterModel = require('../../models/chapter.model');
+const defaultHooks = require('./chapter.hooks');
 
 const debug = makeDebug('playing:book-services:chapters');
 
@@ -11,7 +11,7 @@ const defaultOptions = {
   name: 'chapters'
 };
 
-export class ChapterService extends Service {
+class ChapterService extends Service {
   constructor (options) {
     options = fp.assignAll(defaultOptions, options);
     super(options);
@@ -30,9 +30,8 @@ export class ChapterService extends Service {
   }
 }
 
-export default function init (app, options, hooks) {
+module.exports = function init (app, options, hooks) {
   options = { ModelName: 'chapter', ...options };
   return createService(app, ChapterService, ChapterModel, options);
-}
-
-init.Service = ChapterService;
+};
+module.exports.Service = ChapterService;

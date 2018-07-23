@@ -16,15 +16,9 @@
     "test": "npm run lint && npm run coverage"
   },
   "dependencies": {
-    "feathers-authentication": "^1.2.3",
+    "debug": "^3.1.0",
     "feathers-authentication-hooks": "^0.1.4",
-    "feathers-authentication-jwt": "^0.3.1",
-    "feathers-authentication-local": "^0.3.4",
-    "feathers-hooks": "^2.0.0",
-    "feathers-hooks-common": "^3.5.1",
-    "mongoose": "^4.9.8",
-    "mongoose-random": "^0.1.1",
-    "nats": "^1.0.0",
+    "glob": "^7.1.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   },
